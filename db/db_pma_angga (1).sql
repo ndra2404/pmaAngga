@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2023 at 02:15 AM
--- Server version: 10.4.27-MariaDB
+-- Generation Time: Dec 31, 2023 at 02:56 PM
+-- Server version: 10.3.16-MariaDB
 -- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_pma_fajar`
+-- Database: `db_pma_angga`
 --
 
 -- --------------------------------------------------------
@@ -29,24 +29,27 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `gap` (
   `id` int(11) NOT NULL,
-  `nama_penduduk` varchar(100) NOT NULL,
-  `jenis_kelamin` int(1) NOT NULL,
-  `pekerjaan` decimal(10,1) NOT NULL,
-  `penghasilan` decimal(10,1) NOT NULL,
-  `jml_tanggungan` decimal(10,1) NOT NULL,
-  `tempat_tgl` decimal(10,1) NOT NULL,
-  `umur` decimal(10,1) NOT NULL,
-  `sts_kawin` decimal(10,1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `nama` varchar(100) NOT NULL,
+  `Discipline` int(11) DEFAULT NULL,
+  `Integrity` int(11) DEFAULT NULL,
+  `Achievement` int(11) DEFAULT NULL,
+  `Continuous` int(11) DEFAULT NULL,
+  `Improvement` int(11) DEFAULT NULL,
+  `Quality` int(11) DEFAULT NULL,
+  `Customer_Service` int(11) DEFAULT NULL,
+  `TeamWork` int(11) DEFAULT NULL,
+  `Leadership` int(11) DEFAULT NULL,
+  `Analytical_Problem` int(11) DEFAULT NULL,
+  `Planning` int(11) DEFAULT NULL,
+  `Developing` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gap`
 --
 
-INSERT INTO `gap` (`id`, `nama_penduduk`, `jenis_kelamin`, `pekerjaan`, `penghasilan`, `jml_tanggungan`, `tempat_tgl`, `umur`, `sts_kawin`) VALUES
-(1, 'Indra', 1, '5.0', '5.0', '4.5', '5.0', '4.0', '3.0'),
-(2, 'Kita', 1, '5.0', '4.5', '5.0', '4.0', '5.0', '5.0'),
-(3, 'Berkarya', 1, '4.5', '5.0', '4.5', '4.0', '5.0', '4.0');
+INSERT INTO `gap` (`id`, `nama`, `Discipline`, `Integrity`, `Achievement`, `Continuous`, `Improvement`, `Quality`, `Customer_Service`, `TeamWork`, `Leadership`, `Analytical_Problem`, `Planning`, `Developing`) VALUES
+(1, 'Indra', 4, 5, 5, 4, 5, 5, 5, 3, 3, 5, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -56,18 +59,47 @@ INSERT INTO `gap` (`id`, `nama_penduduk`, `jenis_kelamin`, `pekerjaan`, `penghas
 
 CREATE TABLE `hasil` (
   `id` int(11) NOT NULL,
-  `nama_penduduk` varchar(25) NOT NULL,
+  `nama` varchar(25) NOT NULL,
   `hasil` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hasil`
 --
 
-INSERT INTO `hasil` (`id`, `nama_penduduk`, `hasil`) VALUES
-(1, 'Indra', '4.40'),
-(2, 'Kita', '4.77'),
-(3, 'Berkarya', '4.50');
+INSERT INTO `hasil` (`id`, `nama`, `hasil`) VALUES
+(1, 'Indra', '4.50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `karyawan`
+--
+
+CREATE TABLE `karyawan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `Discipline` int(11) DEFAULT NULL,
+  `Integrity` int(11) DEFAULT NULL,
+  `Achievement` int(11) DEFAULT NULL,
+  `Continuous` int(11) DEFAULT NULL,
+  `Improvement` int(11) DEFAULT NULL,
+  `Quality` int(11) DEFAULT NULL,
+  `Customer_Service` int(11) DEFAULT NULL,
+  `TeamWork` int(11) DEFAULT NULL,
+  `Leadership` int(11) DEFAULT NULL,
+  `Analytical_Problem` int(11) DEFAULT NULL,
+  `Planning` int(11) DEFAULT NULL,
+  `Developing` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `karyawan`
+--
+
+INSERT INTO `karyawan` (`id`, `nama`, `Discipline`, `Integrity`, `Achievement`, `Continuous`, `Improvement`, `Quality`, `Customer_Service`, `TeamWork`, `Leadership`, `Analytical_Problem`, `Planning`, `Developing`) VALUES
+(1, 'Indra', 4, 5, 5, 4, 5, 5, 5, 5, 5, 5, 5, 5),
+(2, 'bayu', 5, 4, 5, 4, 5, 3, 4, 4, 3, 5, 4, 5);
 
 -- --------------------------------------------------------
 
@@ -80,19 +112,25 @@ CREATE TABLE `kriteria` (
   `nama` varchar(64) NOT NULL,
   `jenis` enum('cf','sf') NOT NULL,
   `ket` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kriteria`
 --
 
 INSERT INTO `kriteria` (`id`, `nama`, `jenis`, `ket`) VALUES
-(1, 'Pekerjaan', 'cf', 'pekerjaan'),
-(2, 'Penghasilan', 'cf', 'penghasilan'),
-(3, 'Jumlah Tanggungan', 'sf', 'jml_tanggungan'),
-(4, 'Tempat Tinggal', 'sf', 'tempat_tgl'),
-(5, 'Umur', 'sf', 'umur'),
-(6, 'Status Pernikahan', 'cf', 'sts_kawin');
+(1, 'Discipline', 'cf', 'Discipline'),
+(2, 'Integrity', 'cf', 'Integrity'),
+(3, 'Achievement', 'sf', 'Achievement'),
+(4, 'Continuous', 'cf', 'Continuous'),
+(5, 'Improvement', 'sf', 'Improvement'),
+(6, 'Quality', 'cf', 'Quality'),
+(7, 'Customer Service', 'cf', 'Customer_Service'),
+(8, 'Team Work', 'cf', 'TeamWork'),
+(9, 'Leadership', 'sf', 'Leadership'),
+(10, 'Analytical & Problem', 'cf', 'Analytical_Problem'),
+(11, 'Planning', 'sf', 'Planning'),
+(12, 'Developing', 'cf', 'Developing');
 
 -- --------------------------------------------------------
 
@@ -105,7 +143,7 @@ CREATE TABLE `pembobotan` (
   `selisih` float NOT NULL,
   `bobot` float NOT NULL,
   `ket` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pembobotan`
@@ -125,33 +163,6 @@ INSERT INTO `pembobotan` (`id`, `selisih`, `bobot`, `ket`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penduduk`
---
-
-CREATE TABLE `penduduk` (
-  `id` int(11) NOT NULL,
-  `nama_penduduk` varchar(100) NOT NULL,
-  `jenis_kelamin` int(1) NOT NULL,
-  `pekerjaan` int(11) NOT NULL,
-  `penghasilan` int(11) NOT NULL,
-  `jml_tanggungan` int(11) NOT NULL,
-  `tempat_tgl` int(11) NOT NULL,
-  `umur` int(11) NOT NULL,
-  `sts_kawin` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `penduduk`
---
-
-INSERT INTO `penduduk` (`id`, `nama_penduduk`, `jenis_kelamin`, `pekerjaan`, `penghasilan`, `jml_tanggungan`, `tempat_tgl`, `umur`, `sts_kawin`) VALUES
-(1, 'Indra', 1, 3, 4, 4, 5, 3, 3),
-(2, 'Kita', 1, 3, 5, 3, 4, 4, 5),
-(3, 'Berkarya', 1, 4, 3, 4, 4, 4, 4);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `peringkat`
 --
 
@@ -159,7 +170,7 @@ CREATE TABLE `peringkat` (
   `id` int(11) NOT NULL,
   `mhs_id` int(11) NOT NULL,
   `nilai_total` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `peringkat`
@@ -179,7 +190,7 @@ CREATE TABLE `profil_standar2` (
   `id` int(11) NOT NULL,
   `kriteria_id` int(11) NOT NULL,
   `subkriteria_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `profil_standar2`
@@ -187,11 +198,17 @@ CREATE TABLE `profil_standar2` (
 
 INSERT INTO `profil_standar2` (`id`, `kriteria_id`, `subkriteria_id`) VALUES
 (1, 1, 1),
-(2, 2, 5),
-(3, 3, 8),
-(4, 4, 12),
-(5, 5, 14),
-(6, 6, 18);
+(2, 2, 6),
+(3, 3, 12),
+(4, 4, 16),
+(5, 5, 21),
+(6, 6, 26),
+(7, 7, 31),
+(8, 8, 39),
+(9, 9, 44),
+(10, 10, 47),
+(11, 11, 52),
+(12, 12, 57);
 
 -- --------------------------------------------------------
 
@@ -204,31 +221,73 @@ CREATE TABLE `sub_kriteria` (
   `kriteria_id` int(11) NOT NULL,
   `nama` varchar(68) NOT NULL,
   `nilai` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sub_kriteria`
 --
 
 INSERT INTO `sub_kriteria` (`id`, `kriteria_id`, `nama`, `nilai`) VALUES
-(1, 1, 'Buruh Harian Lepas', 3),
-(2, 1, 'Wiraswasta', 4),
-(3, 1, 'Karyawan Swasta', 5),
-(4, 2, '2.000.000', 3),
-(5, 2, '>500.000 & < 1.000.000', 4),
-(6, 2, '<=500.000', 5),
-(7, 3, '3 Orang', 3),
-(8, 3, '4-5', 4),
-(9, 3, '>5', 5),
-(10, 4, 'Layak', 3),
-(11, 4, 'Tidak Layak', 4),
-(12, 4, 'Sangat Tidak Layak', 5),
-(13, 5, '< 40 Tahun', 3),
-(14, 5, '40 - 45 Tahun', 4),
-(15, 5, '>45', 5),
-(16, 6, 'Menikah', 3),
-(17, 6, 'Cerai Hidup', 4),
-(18, 6, 'Cerai Mati', 5);
+(1, 1, 'Baik Sekali', 5),
+(2, 1, 'Baik', 4),
+(3, 1, 'Sedang', 3),
+(4, 1, 'Kurang', 2),
+(5, 1, 'Kurang sekali', 1),
+(6, 2, 'Baik Sekali', 5),
+(7, 2, 'Baik', 4),
+(8, 2, 'Sedang', 3),
+(9, 2, 'Kurang', 2),
+(10, 2, 'Kurang sekali', 1),
+(11, 3, 'Baik Sekali', 5),
+(12, 3, 'Baik', 4),
+(13, 3, 'Sedang', 3),
+(14, 3, 'Kurang', 2),
+(15, 3, 'Kurang sekali', 1),
+(16, 4, 'Baik Sekali', 5),
+(17, 4, 'Baik', 4),
+(18, 4, 'Sedang', 3),
+(19, 4, 'Kurang', 2),
+(20, 4, 'Kurang sekali', 1),
+(21, 5, 'Baik Sekali', 5),
+(22, 5, 'Baik', 4),
+(23, 5, 'Sedang', 3),
+(24, 5, 'Kurang', 2),
+(25, 5, 'Kurang sekali', 1),
+(26, 6, 'Baik Sekali', 5),
+(27, 6, 'Baik', 4),
+(28, 6, 'Sedang', 3),
+(29, 6, 'Kurang', 2),
+(30, 6, 'Kurang sekali', 1),
+(31, 7, 'Baik Sekali', 5),
+(32, 7, 'Baik', 4),
+(33, 7, 'Sedang', 3),
+(34, 7, 'Kurang', 2),
+(35, 7, 'Kurang sekali', 1),
+(36, 8, 'Baik Sekali', 5),
+(37, 8, 'Baik', 4),
+(38, 8, 'Sedang', 3),
+(39, 8, 'Kurang', 2),
+(40, 8, 'Kurang sekali', 1),
+(41, 9, 'Baik Sekali', 5),
+(42, 9, 'Baik', 4),
+(43, 9, 'Sedang', 3),
+(44, 9, 'Kurang', 2),
+(45, 9, 'Kurang sekali', 1),
+(46, 10, 'Baik Sekali', 5),
+(47, 10, 'Baik', 4),
+(48, 10, 'Sedang', 3),
+(49, 10, 'Kurang', 2),
+(50, 10, 'Kurang sekali', 1),
+(51, 11, 'Baik Sekali', 5),
+(52, 11, 'Baik', 4),
+(53, 11, 'Sedang', 3),
+(54, 11, 'Kurang', 2),
+(55, 11, 'Kurang sekali', 1),
+(56, 12, 'Baik Sekali', 5),
+(57, 12, 'Baik', 4),
+(58, 12, 'Sedang', 3),
+(59, 12, 'Kurang', 2),
+(60, 12, 'Kurang sekali', 1);
 
 -- --------------------------------------------------------
 
@@ -241,16 +300,15 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` text NOT NULL,
   `level` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `level`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
-(2, 'kepala', '870f669e4bbbfa8a6fde65549826d1c4', 2),
-(5, 'admin2@gmail.com', '21232f297a57a5a743894a0e4a801fc3', 1);
+(1, 'admin1', '21232f297a57a5a743894a0e4a801fc3', 1),
+(8, 'bayu@gmail.com', 'a430e06de5ce438d499c2e4063d60fd6', 2);
 
 -- --------------------------------------------------------
 
@@ -259,14 +317,6 @@ INSERT INTO `users` (`id`, `username`, `password`, `level`) VALUES
 -- (See below for the actual view)
 --
 CREATE TABLE `vw_penduduk` (
-`id` int(11)
-,`nama_penduduk` varchar(100)
-,`pekerjaan` varchar(68)
-,`penghasilan` varchar(68)
-,`jml_tanggungan` varchar(68)
-,`tempat_tgl` varchar(68)
-,`umur` varchar(68)
-,`sts_kawin` varchar(68)
 );
 
 -- --------------------------------------------------------
@@ -295,6 +345,12 @@ ALTER TABLE `hasil`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `karyawan`
+--
+ALTER TABLE `karyawan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `kriteria`
 --
 ALTER TABLE `kriteria`
@@ -304,12 +360,6 @@ ALTER TABLE `kriteria`
 -- Indexes for table `pembobotan`
 --
 ALTER TABLE `pembobotan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `penduduk`
---
-ALTER TABLE `penduduk`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -348,31 +398,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `gap`
 --
 ALTER TABLE `gap`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hasil`
 --
 ALTER TABLE `hasil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `karyawan`
+--
+ALTER TABLE `karyawan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kriteria`
 --
 ALTER TABLE `kriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `pembobotan`
 --
 ALTER TABLE `pembobotan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `penduduk`
---
-ALTER TABLE `penduduk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `peringkat`
@@ -384,29 +434,23 @@ ALTER TABLE `peringkat`
 -- AUTO_INCREMENT for table `profil_standar2`
 --
 ALTER TABLE `profil_standar2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `sub_kriteria`
 --
 ALTER TABLE `sub_kriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `peringkat`
---
-ALTER TABLE `peringkat`
-  ADD CONSTRAINT `peringkat_ibfk_1` FOREIGN KEY (`mhs_id`) REFERENCES `mhs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `profil_standar2`
