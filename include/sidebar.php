@@ -218,7 +218,7 @@
                         </a>
                     </li>
             <?php endif;?>
-            <?php if($_SESSION['level']==2||$_SESSION['level']==1) :?>
+            <?php if($_SESSION['level']==2||$_SESSION['level']==1||$_SESSION['level']==3) :?>
             <li class="menu nav-item">
                 <a href="?pages=perhitungan" class="nav-link group">
                     <div class="flex items-center">
