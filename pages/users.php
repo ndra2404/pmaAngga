@@ -32,7 +32,7 @@ if(isset($_GET['id'])){
                 foreach ($vwpenduduk as $data) : ?>
                     <tr>
                         <td><?= $data['username']; ?></td>
-                        <td><?= $data['level']==1?'administrator':'Kepala'; ?></td>
+                        <td><?= $data['level']==1?'administrator':($data['level']==2?'Manager':'HRD'); ?></td>
                         <td>
                             <a href="?pages=update-user&id=<?=$data["id"]?>" class="btn btn-info btn-sm">Update</a>
                             <a href="?pages=users&id=<?=$data["id"]?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want delete data?')">Delete</a>

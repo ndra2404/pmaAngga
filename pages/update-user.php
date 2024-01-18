@@ -38,7 +38,8 @@ $data = mysqli_fetch_object($q);
         <select id="ctnSelect" name="level" class="form-select text-white-dark" required>
             <option>Pilih Level</option>
             <option value="1" <?=$data->level==1?'selected':''?>>Administrator</option>
-            <option value="2" <?=$data->level==2?'selected':''?>>Kepala</option>
+            <option value="2" <?=$data->level==2?'selected':''?>>Manager</option>
+            <option value="3" <?=$data->level==2?'selected':''?>>HRD</option>
         </select>
     </div>
     <button type="submit" name="submit" class="btn btn-primary !mt-6">Submit</button>
