@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
         <select id="ctnSelect" name="level" class="form-select text-white-dark" required>
             <option>Pilih Level</option>
             <option value="1">Administrator</option>
-            <option value="2">Kepala</option>
+            <option value="2">Manager</option>
         </select>
     </div>
     <button type="submit" name="submit" class="btn btn-primary !mt-6">Submit</button>
