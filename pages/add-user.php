@@ -34,6 +34,7 @@ if(isset($_POST['submit'])){
             <option>Pilih Level</option>
             <option value="1">Administrator</option>
             <option value="2">Manager</option>
+            <option value="3">HRD</option>
         </select>
     </div>
     <button type="submit" name="submit" class="btn btn-primary !mt-6">Submit</button>
