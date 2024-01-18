@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
     <form action="" method="post">
     <div>
         <label for="ctnEmail">Username</label>
-        <input id="ctnEmail" type="email" name="nama" placeholder="Indra" class="form-input" required />
+        <input id="ctnEmail" type="text" name="nama" placeholder="Indra" class="form-input" required />
     </div>
     <div>
         <label for="ctnEmail">Password</label>

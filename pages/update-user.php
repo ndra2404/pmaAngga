@@ -27,7 +27,7 @@ $data = mysqli_fetch_object($q);
     <form action="" method="post">
     <div>
         <label for="ctnEmail">Username</label>
-        <input id="ctnEmail" type="" readonly name="nama" value="<?=$data->username?>" placeholder="Indra" class="form-input" required />
+        <input id="ctnEmail" type="text" readonly name="nama" value="<?=$data->username?>" placeholder="Indra" class="form-input" required />
     </div>
     <div>
         <label for="ctnEmail">Password</label>
