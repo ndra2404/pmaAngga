@@ -253,7 +253,7 @@ $kriterias = query("select * from kriteria");
                     <th rowspan="2">Nama</th>
                     <th colspan="<?=count($vcf)+1?>" style="text-align: center;">NCF</th>
                     <th colspan="<?=count($vsf)+1?>" style="text-align: center;">NSF</th>
-                    <th rowspan="2">63%*NCF+37%*NSF</th>
+                    <th rowspan="2">58%*NCF+42%*NSF</th>
                 </tr>
                     <?php
                         foreach($vcf as $r):
@@ -295,7 +295,7 @@ $kriterias = query("select * from kriteria");
                             endforeach;
                             $tsf = round($sf/count($vsf),2);
 
-                            $ttlas = round(($tcf*0.63)+($tsf*0.37),2);
+                            $ttlas = round(($tcf*0.58)+($tsf*0.42),2);
 
                             insert("insert into hasil(nama,hasil) values ('".$data['nama']."',".$ttlas.")");
                         ?>

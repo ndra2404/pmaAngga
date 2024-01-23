@@ -13,8 +13,8 @@ $pembobotan = query("SELECT * FROM pembobotan");
                 <div class="row mt-2">
                     <div class="col-md-8 mx-auto">
                         <ul class="list-inside list-decimal space-y-3 font-semibold">
-                            <li ><b>Core factor (60%) :</b></li>
-                            <li ><b>Secondar factor (40%) :</b></li>
+                            <li ><b>Core factor (58%) :</b></li>
+                            <li ><b>Secondar factor (42%) :</b></li>
                         </ul>
                         <p class="text-dark mb-5  mt-4 text-center text-xl dark:text-white-light">Dibawah ini adalah tabel kriteria yang diharapkan</p>
                         <table class="table-striped">
